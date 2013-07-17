@@ -1,0 +1,22 @@
+# the build recipe
+# Visual C/C++ on Windows
+
+cc = cl.exe
+rc = rc.exe
+libs = user32.lib
+
+rule cc
+  description = CC $out
+  command = $cc /nologo $cppflags $cflags $cldflags /c /Fo$out $in
+
+rule clink
+  description = CLink $out
+  command = $cc /nologo $ldflags $cldflags /Fe$out $in $libs
+
+rule resc
+  description = ResC $out
+  command = $rc /nologo /fo$out $in
+
+build emptywindow.obj: cc emptywindow.c | resources.h
+build rs.obj: resc rs.rc | resources.h emptywindow.manifest
+build emptywindow.exe: clink emptywindow.obj rs.obj
