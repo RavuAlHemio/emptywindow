@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<assembly
+	xmlns="urn:schemas-microsoft-com:asm.v1"
+	xmlns:asmv2="urn:schemas-microsoft-com:asm.v2"
+	xmlns:asmv3="urn:schemas-microsoft-com:asm.v3"
+	xmlns:ws="http://schemas.microsoft.com/SMI/2005/WindowsSettings"
+	xmlns:c="urn:schemas-microsoft-com:compatibility.v1"
+	manifestVersion="1.0"
+>
+	<assemblyIdentity
+		version="0.0.0.0"
+		processorArchitecture="*"
+		name="com.ondrahosek.emptywindow.win32"
+		type="win32"
+	/>
+	<description>Opens an empty window, and that&#8217;s it.</description>
+
+	<!-- Enable visual styles. -->
+	<dependency>
+		<dependentAssembly>
+			<assemblyIdentity
+				type="win32"
+				name="Microsoft.Windows.Common-Controls"
+				version="6.0.0.0"
+				processorArchitecture="*"
+				publicKeyToken="6595b64144ccf1df"
+				language="*"
+			/>
+		</dependentAssembly>
+	</dependency>
+
+	<!-- Enable DPI awareness. -->
+	<asmv3:application>
+		<asmv3:windowsSettings>
+			<ws:dpiAware>true</ws:dpiAware>
+		</asmv3:windowsSettings>
+	</asmv3:application>
+
+	<!-- Disable administrator forcing. -->
+	<asmv2:trustInfo>
+		<asmv2:security>
+			<asmv2:requestedPrivileges>
+				<asmv2:requestedExecutionLevel
+					level="asInvoker"
+					uiAccess="false"
+				/>
+			</asmv2:requestedPrivileges>
+		</asmv2:security>
+	</asmv2:trustInfo>
+
+	<!-- Note Win7 compatibility. -->
+	<c:compatibility>
+		<c:application>
+			<!-- Vista: -->
+			<c:supportedOS Id="{e2011457-1546-43c5-a5fe-008deee3d3f0}" />
+			<!-- 7: -->
+			<c:supportedOS Id="{35138b9a-5d96-4fbd-8e2d-a2440225f93a}" />
+		</c:application>
+	</c:compatibility>
+</assembly>

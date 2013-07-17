@@ -1,0 +1,21 @@
+# the build recipe
+# cross-compiles on Linux for Windows
+
+cc = i686-w64-mingw32-gcc
+windres = i686-w64-mingw32-windres
+
+rule cc
+  description = CC $out
+  command = $cc $cppflags $cflags $cldflags -c -o $out $in
+
+rule clink
+  description = CLink $out
+  command = $cc $ldflags $cldflags -o $out $in $libs
+
+rule resc
+  description = ResC $out
+  command = $windres $in $out
+
+build emptywindow.o: cc emptywindow.c | resources.h
+build rs.o: resc rs.rc | resources.h emptywindow.manifest
+build emptywindow.exe: clink emptywindow.o rs.o

@@ -1,0 +1,57 @@
+#include "resources.h"
+
+#define RT_MANIFEST 24
+#define CREATEPROCESS_MANIFEST_RESOURCE_ID 1
+
+#define VS_FFI_FILEFLAGSMASK 0x0000003FL
+#define VOS_NT_WINDOWS32     0x00040004L
+#define VFT_APP              0x00000001L
+
+1 VERSIONINFO
+	FILEVERSION    0, 0, 0, 0
+	PRODUCTVERSION 0, 0, 0, 0
+	FILEFLAGS      0x00000000L
+	FILEFLAGSMASK  VS_FFI_FILEFLAGSMASK
+	FILEOS         VOS_NT_WINDOWS32
+	FILETYPE       VFT_APP
+	FILESUBTYPE    0x0000000L
+{
+	BLOCK "StringFileInfo"
+	{
+		BLOCK "040904E4"
+		{
+			VALUE "FileVersion",      L"0.0.0.0"
+			VALUE "ProductVersion",   L"0.0.0.0"
+			VALUE "CompanyName",      L"Ond\x0159ej Ho\x0161ek"
+			VALUE "FileDescription",  L"Empty Window"
+			VALUE "InternalName",     L"emptywindow-win32"
+			VALUE "LegalCopyright",   L"\x00a9 2013 Ond\x0159ej Ho\x0161ek"
+			VALUE "OriginalFilename", L"emptywindow.exe"
+			VALUE "ProductName",      L"Empty Window"
+		}
+	}
+	BLOCK "VarFileInfo"
+	{
+		VALUE "Translation", 0x0409, 1200
+	}
+}
+
+CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "emptywindow.manifest"
+
+//IDI_APPICON ICON DISCARDABLE "res/icon.ico"
+
+// BEGIN language-specific resources
+
+// English, neutral
+LANGUAGE 0x09, 0x00
+STRINGTABLE DISCARDABLE
+{
+	IDS_WINDOWCAPTION, L"Empty Window"
+}
+
+// English, US (as fallback)
+LANGUAGE 0x09, 0x01
+STRINGTABLE DISCARDABLE
+{
+	IDS_WINDOWCAPTION, L"Empty Window"
+}

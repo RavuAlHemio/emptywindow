@@ -1,0 +1,3 @@
+# build system spam
+.ninja_log
+.ninja_deps
