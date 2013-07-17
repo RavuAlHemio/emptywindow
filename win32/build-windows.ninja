@@ -11,7 +11,7 @@ rule cc
 
 rule clink
   description = CLink $out
-  command = $cc /nologo $ldflags $cldflags /Fe$out $in $libs
+  command = $cc /nologo $cldflags /Fe$out $in $libs /link $ldflags
 
 rule resc
   description = ResC $out
@@ -20,3 +20,4 @@ rule resc
 build emptywindow.obj: cc emptywindow.c | resources.h
 build rs.obj: resc rs.rc | resources.h emptywindow.manifest
 build emptywindow.exe: clink emptywindow.obj rs.obj
+  ldflags = /subsystem:windows

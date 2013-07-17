@@ -19,3 +19,4 @@ rule resc
 build emptywindow.o: cc emptywindow.c | resources.h
 build rs.o: resc rs.rc | resources.h emptywindow.manifest
 build emptywindow.exe: clink emptywindow.o rs.o
+  ldflags = -mwindows
